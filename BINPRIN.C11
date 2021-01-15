@@ -1,0 +1,82 @@
+////////////////////////////////////////////////////////////////
+/** ******************************************************** ***
+
+    Written By: John Mark Isaac Madison
+
+    www.twitch.com/kanjicoder
+    https://d3m0.herokuapp.com/
+    https://github.com/KanjiCoder/AAC2020
+
+*** ******************************************************** **/
+////////////////////////////////////////////////////////////////
+//:INCLUDES:=================================================://
+
+    #include  <stdio.h>  //: for: printf
+    #include <stdlib.h>  //: for: atoi
+    #include <stdint.h>  //: for: uint32_t , int32_t
+
+//:=================================================:INCLUDES://
+//:BINARY_PRINT:=============================================://
+#define I32  int32_t /** GCC: <stdint.h> **/
+#define U32 uint32_t /** GCC: <stdint.h> **/
+
+    void
+    BINPRIN_BinaryPrintf( U32 num )
+    {
+        U32 bit ;
+        U32 cou ; //:Counter for dividers
+        U32 e_o = 1; //:every other
+
+        printf(   "( "   );
+        for( I32 i = ( 32 - 1 ) ; i >= 0 ; i-- ){
+            cou++;
+            bit = ( ( num >> i ) & 1 );
+                                printf( "%d" , bit );
+            if( 0 == cou % 4 && 0 != i ){ 
+                e_o = ( ! e_o );
+                if( 0 == e_o ){ printf(" - " ); };
+                if( 1 == e_o ){ printf(" | " ); };
+            };;
+        };;
+        printf(   " )"   );
+        printf(   "\n"   );
+
+        printf( "[dec:num]:%d\n"     , num );
+        printf( "[hex:num]:0x%08x\n" , num );
+    }
+
+#undef  I32
+#undef  U32
+//:=============================================:BINARY_PRINT://
+//:MAIN_FUNC:================================================://
+#define I32 int32_t /** GCC: <stdint.h> **/
+#define U32 uint32_t /** GCC: <stdint.h> **/
+
+    I32 main( I32 noa , char** a_a )
+    {
+        U32 num ;
+
+        if( 2 == noa ){
+           //:  num = atoi( a_a[ 1 ] );
+            num = strtoul( a_a[ 1 ], 0, 0); 
+
+            BINPRIN_BinaryPrintf( num );
+        }else{
+            printf("[give_ONE_arg]\n");
+        };;
+    }
+
+#undef  I32
+#undef  U32
+//:================================================:MAIN_FUNC://
+////////////////////////////////////////////////////////////////
+/** ******************************************************** ***
+
+    Written By: John Mark Isaac Madison
+
+    www.twitch.com/kanjicoder
+    https://d3m0.herokuapp.com/
+    https://github.com/KanjiCoder/AAC2020
+
+*** ******************************************************** **/
+////////////////////////////////////////////////////////////////
